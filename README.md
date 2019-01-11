@@ -1,6 +1,8 @@
 # Direct Payment Standard
 
-This standard is intended to specify a common way for entities to advertise payment options as well as facilitate payments directly between 2 parties.
+This standard (DPS) is intended to specify a common way for entities to advertise payment options as well as facilitate payments directly between 2 parties. 
+
+The core purpose of DPS is to help shift the tech industry status quo, whem processing payments, from reliance on 3rd-party proprietary APIs to a standardize protocol that is more flexible and robust (e.g. Twitter API vs email SMTP).
 
 Currently the stardard consists of these parts:
 
@@ -10,24 +12,27 @@ Currently the stardard consists of these parts:
 
 ## DPS addresses
 
-DPS address are written like typical email addresses. That is `<username>@<domainname>`. E.g. `bobsmith@example.com`, where `bobsmith` is the username and `example.com` is the domain.
-  
-Additionally, domain-only (without the username part) is also an acceptable DPS address, e.g. `@example.com`. This would be useful for businesses as their endpoint, or for individuals that have a domain that matches their real name or brand.
+DPS address are written either like typical email addresses or an email address without the username portion. Examples are:
+
+    bobsmith@example.com
+    shop@bobsmith.com
+    @bobsmith.com
 
 ## DNS layer
 
 To allow DPS address to resolve to a predictable endpoint, a DNS records specifies where the DPS endpoint is for a given domain. The convention is as follows:
 
 - Add a `TXT` DNS record for the domain you want to resolve with the format `'dps:endpoint url=<YOUR_DPS_SERVER_ROOT_URL>'`
-- The URL must be a HTTPS URL. 
+- The URL must be a HTTPS URL, and thus a valid HTTPS certificate must exist.
 
 For instance, if your domain is `example.com`, you might set DNS record to point to `https://example.com/dps` or `https://dps.example.com`, and thus your DNS record might look like:
 
     'dps:endpoint url=https://dps.example.com'
-    'dps:endpoint url=https://example.com/dps'
+    'dps:endpoint url=https://www.example.com/dps'
 
-Note non-root path URLs should be allowed, e.g. `/dps`, so that a DPS endpoint can be added to an existing 
-website, and thus a domain owner can leverage an existing HTTPS certificate for a website they are already running.
+Note:
+
+- Non-root path URLs should be allowed, e.g. `/dps`, so that a DPS endpoint can be added to an existing website, and thus a domain owner can leverage an existing HTTPS certificate for a website they are already running.
 
 *Additional DNS records...*
 
