@@ -1,6 +1,6 @@
 # Direct Payment Standard
 
-This standard is intended to specify a common way for Vendors to advertise payment options as well as facilitate payments themselves.
+This standard is intended to specify a common way for entities to advertise payment options as well as facilitate payments directly between 2 parties.
 
 Currently the stardard consists of these parts:
 
@@ -21,13 +21,13 @@ To allow DPS address to resolve to a predictable endpoint, a DNS records specifi
 - Add a `TXT` DNS record for the domain you want to resolve with the format `'dps:endpoint url=<YOUR_DPS_SERVER_ROOT_URL>'`
 - The URL must be a HTTPS URL. 
 
-For instance, if your domain is `example.com`, you might set DNS record to point to `https://example.com/dps` or `https://dps.example.com`, and thus your DNS record might look like.
+For instance, if your domain is `example.com`, you might set DNS record to point to `https://example.com/dps` or `https://dps.example.com`, and thus your DNS record might look like:
 
     'dps:endpoint url=https://dps.example.com'
     'dps:endpoint url=https://example.com/dps'
 
 Note non-root path URLs should be allowed, e.g. `/dps`, so that a DPS endpoint can be added to an existing 
-website, and thus a domain owner can have the flexibility of leveraging an existing HTTPS certificate.
+website, and thus a domain owner can leverage an existing HTTPS certificate for a website they are already running.
 
 *Additional DNS records...*
 
@@ -41,7 +41,7 @@ Probably will need additional records for cryptographic signing, to help reduce 
 Actions (suggestions for now):
 
 1. `GET /serivces` => Return JSON list of payout options + other metadata about the server
-1. `GET /`*something*  => Request an address for an upcoming push-payment, e.g. for a cryptocurrency. Returns a JSON string with:
+1. `GET /XXX`  => Request an address for an upcoming push-payment, e.g. for a cryptocurrency. Returns a JSON string with:
     * The cryptocurrency address/PayPal email.
     * A timestamp of how long that address is valid for. 
     * A transaction ID that will be associated with the next push-transaction completed, and thus used to reference this upcoming transaction in the future.
