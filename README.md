@@ -4,9 +4,9 @@ This standard is intended to specify a common way for Vendors to advertise payme
 
 Currently the stardard consists of these parts:
 
-1. DPS addresses, which are resolved to a specific DPS server + username, which are used to specify who is to be paid.
-1. A DNS records which specify the DPS endpoint for a given domain.
-1. A DPS server protocol, which can respond to queries such as listing payment options and facilitating processing a payment.
+1. **DPS addresses**, which are resolved to a specific DPS server + username, which are used to specify who is to be paid.
+1. **DNS records** which specify the DPS endpoint (and other details) for a given domain.
+1. **DPS server protocol**, which can respond to queries such as listing payment options and facilitating processing a payment.
 
 ## DPS addresses
 
